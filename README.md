@@ -28,7 +28,21 @@ pi install git:github.com/zeekrey/herdr-pi-subagents
 
 Then restart Pi inside herdr.
 
-Keep pi-subagents' Herdr bridge enabled. It publishes the "⏳ N subagents" label, and this extension turns its `herdr:busy` signal into pane state. To show that label in herdr's agent sidebar, add `state_text` or `$summary` to the row layout, as described in the pi-subagents docs.
+Keep pi-subagents' Herdr bridge enabled. This extension turns its `herdr:busy` signal into pane state.
+
+## Show the subagent label in the sidebar
+
+pi-subagents also reports a label like `⏳ 2 subagents (worker, reviewer)`, but herdr's default sidebar layout doesn't show it. To see it, add `state_text` to the agent rows in `~/.config/herdr/config.toml`:
+
+```toml
+[ui.sidebar.agents]
+rows = [
+  ["state_icon", "machine", "workspace", "tab"],
+  ["agent", "state_text"],
+]
+```
+
+Then run `herdr server reload-config`. While background subagents run, the second line of the Pi entry shows the label. Otherwise it shows the normal state (`idle`, `done`, `working`). This only affects the expanded sidebar; the collapsed and mobile views keep their compact layout.
 
 Note: `herdr integration install pi`, or accepting herdr's "integration outdated" prompt, reinstalls the official extension. This package then disables itself until you uninstall the official one again.
 

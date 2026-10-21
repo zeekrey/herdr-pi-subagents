@@ -1,0 +1,10 @@
+herdr-pi-subagents
+
+extensions/herdr-agent-state.ts is derived from herdr's Pi integration
+(https://github.com/herdrdev/herdr, src/integration/assets/pi/herdr-agent-state.ts,
+integration version 9, commit 143bf5fd4781d164260c63fe28e7dc08054ad32f),
+licensed under the Apache License, Version 2.0.
+
+It was modified to consume the `herdr:busy` event emitted by pi-subagents,
+to debounce the idle transition when background work ends, and to disable
+itself when herdr's own Pi integration is installed.

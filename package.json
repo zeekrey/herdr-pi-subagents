@@ -1,0 +1,19 @@
+{
+  "name": "herdr-pi-subagents",
+  "version": "0.1.0",
+  "description": "herdr's Pi integration, extended so panes stay working while pi-subagents background runs are active",
+  "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeekrey/herdr-pi-subagents.git"
+  },
+  "keywords": ["pi-package", "pi", "pi-coding-agent", "extension", "herdr", "subagents"],
+  "pi": {
+    "extensions": ["./extensions/herdr-agent-state.ts"]
+  },
+  "files": ["extensions/", "README.md", "LICENSE", "NOTICE"],
+  "scripts": {
+    "test": "bun test"
+  }
+}
